@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 1rem;
+  background-color: #232323;
+  overflow: hidden;
+}
+
+.vehicle-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.vehicle-selector button {
+  background-color: #ddd;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.vehicle-selector button.active {
+  background-color: #d00;
+  color: white;
+}
+
+.image-map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.image-map-wrapper img {
+  width: 100%;
+  display: block;
+}
+
+.marker {
+  position: absolute;
+  color: white;
+  border-radius: 50%;
+  border: 3px solid #f82930;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.35rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.marker:hover {
+  background-color: #f82930;
+  transform: scale(1.2);
+}
+
+.marker.active {
+  background-color: #f82930;
+  transform: scale(1.2);
+}
+
+.card-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  margin-top: 2rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  max-width: 170px;
+  flex: 0 0 auto;
+  background: white;
+  border: 3px solid #232323;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  border: 3px solid #f82930;
+}
+
+.card.active {
+  border: 3px solid #f82930;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-body {
+  padding: 0.75rem 1rem;
+}
+
+.card-body h4 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #111;
+}
+
+.card-body p {
+  font-size: 0.875rem;
+  color: #444;
+}
+
+.hidden {
+  display: none;
+}
