@@ -1,3 +1,4 @@
+/* Base Reset */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,17 +6,21 @@ body {
   color: #333;
 }
 
+/* Container */
 .container {
   max-width: 1200px;
   margin: 5rem auto;
   padding: 1rem;
   background-color: #232323;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
+/* Vehicle Selector */
 .vehicle-selector {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -27,6 +32,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s;
 }
 
 .vehicle-selector button.active {
@@ -34,17 +40,19 @@ body {
   color: white;
 }
 
+/* Image Map */
 .image-map-wrapper {
   position: relative;
   width: 100%;
-  max-width: 100%;
 }
 
 .image-map-wrapper img {
   width: 100%;
+  height: auto;
   display: block;
 }
 
+/* Markers */
 .marker {
   position: absolute;
   color: white;
@@ -57,20 +65,14 @@ body {
   align-items: center;
   font-size: 1.35rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s, background-color 0.3s;
 }
 
-.marker:hover {
-  background-color: #f82930;
-  transform: scale(1.2);
-}
-
+.marker:hover,
 .marker.active {
   background-color: #f82930;
-  transform: scale(1.2);
 }
 
+/* Card Carousel */
 .card-carousel {
   display: flex;
   overflow-x: auto;
@@ -79,6 +81,7 @@ body {
   margin-top: 2rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  padding-bottom: 1rem;
 }
 
 .card-carousel::-webkit-scrollbar {
@@ -86,18 +89,16 @@ body {
 }
 
 .card {
-  max-width: 170px;
   flex: 0 0 auto;
+  width: 170px;
   background: white;
   border: 3px solid #232323;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: border 0.3s;
 }
 
-.card:hover {
-  border: 3px solid #f82930;
-}
-
+.card:hover,
 .card.active {
   border: 3px solid #f82930;
 }
@@ -110,6 +111,7 @@ body {
 
 .card-body {
   padding: 0.75rem 1rem;
+  box-sizing: border-box;
 }
 
 .card-body h4 {
@@ -120,9 +122,55 @@ body {
 
 .card-body p {
   font-size: 0.875rem;
+  font-style: italic;
   color: #444;
 }
 
+/* Hide Elements */
 .hidden {
   display: none;
+}
+
+/* ------------------------------
+   Responsive Design
+------------------------------ */
+@media (max-width: 768px) {
+  .vehicle-selector {
+    gap: 0.5rem;
+  }
+
+  .vehicle-selector button {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .marker {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  .card {
+    width: 140px;
+  }
+
+  .card-body h4 {
+    font-size: 0.9rem;
+  }
+
+  .card-body p {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 120px;
+  }
+
+  .marker {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
 }
