@@ -7,17 +7,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
+    <div class="vehicle-selector-wrapper">
       <div class="vehicle-selector">
-        <button class="active" data-vehicle="jeep">JEEP</button>
-        <button data-vehicle="truck">TRUCK</button>
-        <button data-vehicle="car">CAR</button>
-        <button data-vehicle="bike">BIKE</button>
-        <button data-vehicle="cybertruck">CYBERTRUCK</button>
+        <button class="active" data-vehicle="jeep">
+          <img src="images/jeep product top.png" alt="Jeep" />
+          <span>JEEP</span>
+        </button>
+        <button data-vehicle="truck">
+          <img src="images/truck product top.png" alt="Truck" />
+          <span>TRUCK</span>
+        </button>
+        <button data-vehicle="car">
+          <img src="images/car product top.png" alt="Car" />
+          <span>CAR</span>
+        </button>
+        <button data-vehicle="bike">
+          <img src="images/motorcycle product  top.png" alt="Motorcycle" />
+          <span>MOTORCYCLE</span>
+        </button>
+        <button data-vehicle="cybertruck">
+          <img src="images/cybertruck product top.png" alt="Cybertruck" />
+          <span>CYBERTRUCK</span>
+        </button>
       </div>
-
+    </div>
+    <div class="container">
       <div class="image-map-wrapper">
         <img src="images/jeep product.png" id="mainImage" alt="Car Image" />
+        <button class="carousel-btn prev-btn">&#10094;</button>
+        <button class="carousel-btn next-btn">&#10095;</button>
         <div id="markerContainer"></div>
       </div>
 

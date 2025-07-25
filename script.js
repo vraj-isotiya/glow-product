@@ -3,6 +3,42 @@ const cardStack = document.getElementById("cardStack");
 const vehicleButtons = document.querySelectorAll(".vehicle-selector button");
 const mainImage = document.getElementById("mainImage");
 
+const vehicleOrder = ["jeep", "truck", "car", "bike", "cybertruck"];
+let currentVehicleIndex = 0;
+
+function changeVehicle(offset) {
+  currentVehicleIndex =
+    (currentVehicleIndex + offset + vehicleOrder.length) % vehicleOrder.length;
+  const nextVehicle = vehicleOrder[currentVehicleIndex];
+
+  // Update vehicle selector button state
+  vehicleButtons.forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.vehicle === nextVehicle);
+  });
+
+  renderVehicle(nextVehicle);
+}
+
+document
+  .querySelector(".prev-btn")
+  .addEventListener("click", () => changeVehicle(-1));
+document
+  .querySelector(".next-btn")
+  .addEventListener("click", () => changeVehicle(1));
+
+const buttons = document.querySelectorAll(".vehicle-selector button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    buttons.forEach((btn) => btn.classList.remove("active"));
+    button.classList.add("active");
+
+    // Optional logic
+    const vehicleType = button.dataset.vehicle;
+    console.log("Selected vehicle:", vehicleType);
+  });
+});
+
 const vehicleData = {
   jeep: [
     {

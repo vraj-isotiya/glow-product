@@ -17,27 +17,96 @@ body {
 }
 
 /* Vehicle Selector */
+.vehicle-selector-wrapper {
+  background-color: black;
+  max-width: 1200px;
+  width: 100%;
+  margin: 50px auto;
+  padding: 0 1rem;
+}
+
 .vehicle-selector {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
   gap: 1rem;
-  margin-bottom: 1rem;
+  padding: 2rem 0;
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
 
 .vehicle-selector button {
-  background-color: #ddd;
+  background: none;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+  color: white;
   font-weight: bold;
-  transition: background-color 0.3s;
+  font-style: italic;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  position: relative;
+}
+
+.vehicle-selector button img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.vehicle-selector button span {
+  display: block;
+  position: relative;
+  padding: 0.2rem 0;
+  text-transform: uppercase;
+}
+
+.vehicle-selector button span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 2px;
+  width: 0%;
+  background-color: #fc2a31;
+  transform: translateX(-50%);
 }
 
 .vehicle-selector button.active {
-  background-color: #d00;
-  color: white;
+  color: #fc2a31;
+}
+
+.vehicle-selector button.active span::after {
+  width: 100%;
+}
+
+@media (max-width: 630px) {
+  .vehicle-selector button {
+    min-width: 50px;
+  }
+  .vehicle-selector button span {
+    font-size: 0.5rem;
+  }
+  .vehicle-selector-wrapper {
+    margin: 20px auto;
+    padding: 0 0.5rem;
+  }
+  .vehicle-selector {
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .vehicle-selector button {
+    min-width: 80px;
+  }
+  .vehicle-selector button span {
+    font-size: 1rem;
+  }
 }
 
 /* Image Map */
@@ -50,6 +119,30 @@ body {
   width: 100%;
   height: auto;
   display: block;
+}
+
+/* Carousel Button Styles */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+  pointer-events: auto;
+}
+
+.prev-btn {
+  left: 10px; /* Stick to left edge of image container */
+}
+
+.next-btn {
+  right: 10px; /* Stick to right edge of image container */
 }
 
 /* Markers */
@@ -135,15 +228,6 @@ body {
    Responsive Design
 ------------------------------ */
 @media (max-width: 768px) {
-  .vehicle-selector {
-    gap: 0.5rem;
-  }
-
-  .vehicle-selector button {
-    padding: 0.4rem 0.75rem;
-    font-size: 0.875rem;
-  }
-
   .marker {
     width: 2.5rem;
     height: 2.5rem;
