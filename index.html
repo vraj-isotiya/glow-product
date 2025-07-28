@@ -33,12 +33,30 @@
     </div>
     <div class="container">
       <div class="image-map-wrapper">
-        <img src="images/jeep product.png" id="mainImage" alt="Car Image" />
+        <div class="carousel-images">
+          <img src="images/jeep product.png" alt="jeep" data-vehicle="jeep" />
+          <img
+            src="images/truck product.png"
+            alt="truck"
+            data-vehicle="truck"
+          />
+          <img src="images/car product.png" alt="car" data-vehicle="car" />
+          <img
+            src="images/motorcycle product.png"
+            alt="bike"
+            data-vehicle="bike"
+          />
+          <img
+            src="images/car product.png"
+            alt="cybertruck"
+            data-vehicle="cybertruck"
+          />
+        </div>
+
         <button class="carousel-btn prev-btn">&#10094;</button>
         <button class="carousel-btn next-btn">&#10095;</button>
         <div id="markerContainer"></div>
       </div>
-
       <div class="card-carousel" id="cardStack"></div>
     </div>
     <script src="script.js"></script>

@@ -1,31 +1,42 @@
 const markersContainer = document.getElementById("markerContainer");
 const cardStack = document.getElementById("cardStack");
 const vehicleButtons = document.querySelectorAll(".vehicle-selector button");
-const mainImage = document.getElementById("mainImage");
 
 const vehicleOrder = ["jeep", "truck", "car", "bike", "cybertruck"];
 let currentVehicleIndex = 0;
 
+const carousel = document.querySelector(".carousel-images");
+const images = document.querySelectorAll(".carousel-images img");
+
 function changeVehicle(offset) {
   currentVehicleIndex =
     (currentVehicleIndex + offset + vehicleOrder.length) % vehicleOrder.length;
+
   const nextVehicle = vehicleOrder[currentVehicleIndex];
 
-  // Update vehicle selector button state
+  // Move the carousel to the correct image
+  const imageWidth = images[0].clientWidth;
+  carousel.style.transform = `translateX(-${
+    currentVehicleIndex * imageWidth
+  }px)`;
+
+  // Highlight active vehicle button if buttons exist
   vehicleButtons.forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.vehicle === nextVehicle);
   });
 
+  // Call your custom render function
   renderVehicle(nextVehicle);
 }
 
-document
-  .querySelector(".prev-btn")
-  .addEventListener("click", () => changeVehicle(-1));
-document
-  .querySelector(".next-btn")
-  .addEventListener("click", () => changeVehicle(1));
+// Handle prev/next button clicks
+document.querySelector(".prev-btn").addEventListener("click", () => {
+  changeVehicle(-1);
+});
 
+document.querySelector(".next-btn").addEventListener("click", () => {
+  changeVehicle(1);
+});
 const buttons = document.querySelectorAll(".vehicle-selector button");
 
 buttons.forEach((button) => {
@@ -242,18 +253,9 @@ const vehicleData = {
   ],
 };
 
-const vehicleImages = {
-  jeep: "images/jeep product.png",
-  truck: "images/truck product.png",
-  car: "images/car product.png",
-  bike: "images/motorcycle product.png",
-  cybertruck: "images/cybertruck product.png",
-};
-
 function renderVehicle(vehicle) {
   markersContainer.innerHTML = "";
   cardStack.innerHTML = "";
-  mainImage.src = vehicleImages[vehicle];
   const parts = vehicleData[vehicle];
 
   parts.forEach((part, index) => {
@@ -268,13 +270,11 @@ function renderVehicle(vehicle) {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.index = index;
-    card.innerHTML = `
-          <img src="${part.img}" alt="${part.title}" />
+    card.innerHTML = `<img src="${part.img}" alt="${part.title}" />
           <div class="card-body">
             <h4>${part.title}</h4>
             <p>${part.price}</p>
-          </div>
-        `;
+          </div>`;
     cardStack.appendChild(card);
 
     marker.addEventListener("click", () => {
